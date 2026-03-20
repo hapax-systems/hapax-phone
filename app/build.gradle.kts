@@ -56,6 +56,9 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.kotlinx.serialization.json)
 
+    // Activity Recognition (Google Play Services)
+    implementation(libs.play.services.location)
+
     // DataStore
     implementation(libs.datastore.prefs)
 

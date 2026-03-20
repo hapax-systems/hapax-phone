@@ -1,12 +1,16 @@
 package dev.hapax.phone
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.google.android.gms.location.ActivityRecognition
+import dev.hapax.phone.service.ActivityRecognitionReceiver
+import dev.hapax.phone.service.ContextService
 import dev.hapax.phone.worker.HealthSyncWorker
 import java.time.Duration
 import java.time.LocalDateTime
@@ -18,6 +22,7 @@ class HapaxPhoneApp : Application() {
     override fun onCreate() {
         super.onCreate()
         schedulePeriodicSync()
+        startContextStreaming()
     }
 
     private fun schedulePeriodicSync() {
@@ -49,9 +54,32 @@ class HapaxPhoneApp : Application() {
         Log.i(TAG, "Scheduled periodic health sync (initial delay: ${delayMinutes}min)")
     }
 
+    private fun startContextStreaming() {
+        // Start the context streaming foreground service
+        val serviceIntent = Intent(this, ContextService::class.java)
+        startForegroundService(serviceIntent)
+        Log.i(TAG, "Started ContextService")
+
+        // Register for activity recognition updates (every 60s)
+        try {
+            val pendingIntent = ActivityRecognitionReceiver.getPendingIntent(this)
+            ActivityRecognition.getClient(this)
+                .requestActivityUpdates(ACTIVITY_DETECTION_INTERVAL_MS, pendingIntent)
+                .addOnSuccessListener {
+                    Log.i(TAG, "Activity recognition registered")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Activity recognition failed: ${e.message}")
+                }
+        } catch (e: SecurityException) {
+            Log.w(TAG, "ACTIVITY_RECOGNITION permission not granted: ${e.message}")
+        }
+    }
+
     companion object {
         private const val TAG = "HapaxPhoneApp"
         const val SYNC_WORK_NAME = "health_sync"
         const val SYNC_WORK_TAG = "health_sync"
+        private const val ACTIVITY_DETECTION_INTERVAL_MS = 60_000L
     }
 }
