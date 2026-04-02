@@ -181,7 +181,7 @@ private fun MainScreen(permissions: Set<String>) {
             value = manualIp,
             onValueChange = { manualIp = it },
             label = { Text("Server IP:Port (optional)") },
-            placeholder = { Text("192.168.68.114:8042") },
+            placeholder = { Text("100.117.1.83:8051") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
         )
