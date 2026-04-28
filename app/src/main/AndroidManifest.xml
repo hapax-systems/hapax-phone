@@ -68,6 +68,12 @@
             android:exported="false"
             android:foregroundServiceType="specialUse" />
 
+        <!-- Read-only awareness foreground notification for glance surfaces -->
+        <service
+            android:name=".awareness.AwarenessLiveUpdateService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse" />
+
         <!-- Activity recognition broadcast receiver -->
         <receiver
             android:name=".service.ActivityRecognitionReceiver"

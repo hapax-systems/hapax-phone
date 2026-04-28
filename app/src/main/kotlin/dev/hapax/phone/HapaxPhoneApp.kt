@@ -9,6 +9,7 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.android.gms.location.ActivityRecognition
+import dev.hapax.phone.awareness.AwarenessLiveUpdateService
 import dev.hapax.phone.service.ActivityRecognitionReceiver
 import dev.hapax.phone.service.ContextService
 import dev.hapax.phone.worker.HealthSyncWorker
@@ -23,6 +24,7 @@ class HapaxPhoneApp : Application() {
         super.onCreate()
         schedulePeriodicSync()
         startContextStreaming()
+        startAwarenessLiveUpdate()
     }
 
     private fun schedulePeriodicSync() {
@@ -74,6 +76,12 @@ class HapaxPhoneApp : Application() {
         } catch (e: SecurityException) {
             Log.w(TAG, "ACTIVITY_RECOGNITION permission not granted: ${e.message}")
         }
+    }
+
+    private fun startAwarenessLiveUpdate() {
+        val serviceIntent = Intent(this, AwarenessLiveUpdateService::class.java)
+        startForegroundService(serviceIntent)
+        Log.i(TAG, "Started AwarenessLiveUpdateService")
     }
 
     companion object {
