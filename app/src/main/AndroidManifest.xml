@@ -74,6 +74,11 @@
             android:exported="false"
             android:foregroundServiceType="specialUse" />
 
+        <!-- Placeholder for future Android Min Mode awareness surface -->
+        <service
+            android:name=".awareness.AwarenessMinModeService"
+            android:exported="false" />
+
         <!-- Activity recognition broadcast receiver -->
         <receiver
             android:name=".service.ActivityRecognitionReceiver"

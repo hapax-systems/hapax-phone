@@ -9,6 +9,8 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.android.gms.location.ActivityRecognition
+import dev.hapax.phone.awareness.AwarenessMinModeGate
+import dev.hapax.phone.awareness.AwarenessMinModeService
 import dev.hapax.phone.awareness.AwarenessLiveUpdateService
 import dev.hapax.phone.service.ActivityRecognitionReceiver
 import dev.hapax.phone.service.ContextService
@@ -25,6 +27,7 @@ class HapaxPhoneApp : Application() {
         schedulePeriodicSync()
         startContextStreaming()
         startAwarenessLiveUpdate()
+        startAwarenessMinModeIfAvailable()
     }
 
     private fun schedulePeriodicSync() {
@@ -82,6 +85,15 @@ class HapaxPhoneApp : Application() {
         val serviceIntent = Intent(this, AwarenessLiveUpdateService::class.java)
         startForegroundService(serviceIntent)
         Log.i(TAG, "Started AwarenessLiveUpdateService")
+    }
+
+    private fun startAwarenessMinModeIfAvailable() {
+        if (!AwarenessMinModeGate.isAvailable()) {
+            return
+        }
+        val serviceIntent = Intent(this, AwarenessMinModeService::class.java)
+        startService(serviceIntent)
+        Log.i(TAG, "Started AwarenessMinModeService")
     }
 
     companion object {
