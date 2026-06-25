@@ -1,16 +1,16 @@
 [versions]
-agp = "8.7.3"
-kotlin = "2.1.10"
-compose-bom = "2025.02.00"
-health-connect = "1.1.0-alpha12"
-work = "2.10.0"
-okhttp = "4.12.0"
+agp = "9.2.1"
+kotlin = "2.4.0"
+compose-bom = "2026.06.00"
+health-connect = "1.2.0-alpha04"
+work = "2.11.2"
+okhttp = "5.4.0"
 play-services-location = "21.3.0"
-datastore = "1.1.2"
-material3 = "1.3.1"
-coroutines = "1.9.0"
-kotlinx-serialization = "1.7.3"
-junit = "5.11.4"
+datastore = "1.2.1"
+material3 = "1.4.0"
+coroutines = "1.11.0"
+kotlinx-serialization = "1.11.0"
+junit = "6.1.0"
 
 [libraries]
 health-connect = { module = "androidx.health.connect:connect-client", version.ref = "health-connect" }
@@ -21,9 +21,9 @@ datastore-prefs = { module = "androidx.datastore:datastore-preferences", version
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
-activity-compose = { module = "androidx.activity:activity-compose", version = "1.9.3" }
-core-ktx = { module = "androidx.core:core-ktx", version = "1.15.0" }
-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.8.7" }
+activity-compose = { module = "androidx.activity:activity-compose", version = "1.13.0" }
+core-ktx = { module = "androidx.core:core-ktx", version = "1.19.0" }
+lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.11.0" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
