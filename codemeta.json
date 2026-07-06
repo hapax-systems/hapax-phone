@@ -3,8 +3,8 @@
   "@type": "SoftwareSourceCode",
   "name": "hapax-phone",
   "description": "Constituent of the Hapax operating environment. Android companion that streams daily health summary and 60-second phone context to the council logos API. Kotlin/Compose.",
-  "codeRepository": "https://github.com/ryanklee/hapax-phone",
-  "url": "https://github.com/ryanklee/hapax-phone",
+  "codeRepository": "https://github.com/hapax-systems/hapax-phone",
+  "url": "https://github.com/hapax-systems/hapax-phone",
   "license": "https://polyformproject.org/licenses/strict/1.0.0/",
   "author": [
     {
@@ -22,6 +22,6 @@
     "infrastructure-as-argument"
   ],
   "relatedLink": [
-    "https://github.com/ryanklee/hapax-council"
+    "https://github.com/hapax-systems/hapax-council"
   ]
 }
