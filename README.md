@@ -22,7 +22,7 @@ Constituent of the Hapax operating environment. Android companion that streams d
 - Manifesto: https://hapax.weblog.lol/hapax-manifesto-v0
 - Refusal Brief: https://hapax.weblog.lol/refusal-brief
 - Cohort Disparity Disclosure: https://hapax.weblog.lol/cohort-disparity-disclosure
-- Constitution: https://github.com/ryanklee/hapax-constitution
+- Constitution: https://github.com/hapax-systems/hapax-constitution
 
 ## Inter-repo position
 
@@ -34,7 +34,7 @@ Android phone-side context source. Streams to council logos API over Tailscale.
 
 Android 14+ companion (Pixel/Compose) for the Hapax ecosystem. Single-operator deployment. Two outbound payload streams to the council watch receiver on port `8042`, plus one inbound consumption from the council logos API on port `8051` for the awareness live-update notification surface.
 
-Sister to [hapax-watch](https://github.com/ryanklee/hapax-watch). The watch covers continuous heart-rate streaming and on-wrist haptics. The phone covers daily health rollups, ambient activity recognition, and device state (ringer, screen, battery, network type).
+Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch covers continuous heart-rate streaming and on-wrist haptics. The phone covers daily health rollups, ambient activity recognition, and device state (ringer, screen, battery, network type).
 
 ## Outbound payloads (POST to council `:8042`)
 
@@ -125,12 +125,12 @@ Four JUnit 5 unit-test files (~160 LOC):
 
 | Repository | Role |
 |-----------|------|
-| [hapax-council](https://github.com/ryanklee/hapax-council) | Primary research artifact — voice daemon, grounding system, experiment infrastructure |
-| [hapax-constitution](https://github.com/ryanklee/hapax-constitution) | Governance specification — axioms, implications, canons, precedents |
-| [hapax-officium](https://github.com/ryanklee/hapax-officium) | Supporting software — management decision support |
-| [hapax-watch](https://github.com/ryanklee/hapax-watch) | Wear OS biometric companion |
+| [hapax-council](https://github.com/hapax-systems/hapax-council) | Primary research artifact — voice daemon, grounding system, experiment infrastructure |
+| [hapax-constitution](https://github.com/hapax-systems/hapax-constitution) | Governance specification — axioms, implications, canons, precedents |
+| [hapax-officium](https://github.com/hapax-systems/hapax-officium) | Supporting software — management decision support |
+| [hapax-watch](https://github.com/hapax-systems/hapax-watch) | Wear OS biometric companion |
 | **hapax-phone** (this repo) | Android health + context companion |
-| [hapax-mcp](https://github.com/ryanklee/hapax-mcp) | MCP server bridging the logos APIs to Claude Code |
+| [hapax-mcp](https://github.com/hapax-systems/hapax-mcp) | MCP server bridging the logos APIs to Claude Code |
 
 ## License
 
