@@ -2,7 +2,7 @@
 
 # hapax-phone
 
-`hapax-phone` is internal apparatus in the Hapax Systems portfolio. It is published, mirrored, or staged for controlled inspection only where a separate visibility decision permits it.
+`hapax-phone` is internal apparatus in the Hapax Systems portfolio. It is visible only where a separate visibility decision permits inspection.
 
 ## Reader promise
 
@@ -33,7 +33,10 @@ Private phone-side context bridge for Hapax. It is not a public mobile product a
 
 ## Description
 
-Android 14+ companion (Pixel/Compose) for the Hapax ecosystem. Single-operator deployment. Two outbound payload streams to the council watch receiver on port `8042`, plus one inbound consumption from the council logos API on port `8051` for the awareness live-update notification surface.
+Android 14+ companion (Pixel/Compose) for Hapax. Single-operator deployment.
+Two outbound payload streams go to the council watch receiver on port `8042`.
+One inbound path reads the council logos API on port `8051` for the awareness
+live-update notification surface.
 
 Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch covers continuous heart-rate streaming and on-wrist haptics. The phone covers daily health rollups, ambient activity recognition, and device state (ringer, screen, battery, network type).
 
@@ -52,7 +55,13 @@ Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch
 
 ## Inbound consumption (GET from council `:8051`)
 
-`AwarenessLiveUpdateService` (foreground service) polls `GET /api/awareness` every 60 s and renders a 5-field summary as an Android 16 Live Update notification: stance (daimonion voice register), stream liveness + chronicle event rate, health system status + failure count, refusals in the last hour, and presence decile. The notification is read-only by design — zero PendingIntent, zero action buttons. A response carrying `X-Awareness-State-Stale: true` (or HTTP 503) renders the notification in a stale visual.
+`AwarenessLiveUpdateService` (foreground service) polls `GET /api/awareness`
+every 60 s. It renders a 5-field Android 16 Live Update notification: stance,
+stream liveness plus chronicle event rate, health status plus failure count,
+refusals in the last hour, and presence decile. The notification is read-only
+by design: zero PendingIntent, zero action buttons. A response carrying
+`X-Awareness-State-Stale: true` (or HTTP 503) renders the notification in a
+stale visual.
 
 `AwarenessMinModeGate` is a feature flag for a future Android Min Mode surface (API level 37; `FEATURE_ENABLED=false`). The associated service is declared in the manifest and unreachable until both conditions hold.
 
@@ -122,7 +131,7 @@ Four JUnit 5 unit-test files (~160 LOC):
 | `POST /phone/context` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_context.json` |
 | `GET /api/awareness` (port 8051) | `logos/api/routes/awareness.py` | Returns awareness state; 503 + `X-Awareness-State-Stale: true` when stale |
 
-## Ecosystem
+## Related Repositories
 
 | Repository | Role |
 |-----------|------|
