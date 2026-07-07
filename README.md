@@ -8,6 +8,10 @@
 
 Android phone-side context bridge for the Hapax environment, useful for auditing data sources, transport, and privacy boundaries.
 
+## Reader value
+
+Shows which phone-derived signals enter the estate, which sensors are excluded, and how missing data degrades without becoming a health-efficacy claim.
+
 ## Claim ceiling
 
 Internal device bridge; not a public mobile product and not a health-efficacy claim.
@@ -36,16 +40,18 @@ Private phone-side context bridge for Hapax. It is not a public mobile product a
 Android 14+ companion (Pixel/Compose) for Hapax. Single-operator deployment.
 Two outbound payload streams go to the council watch receiver on port `8042`.
 One inbound path reads the council logos API on port `8051` for the awareness
-live-update notification surface.
+live-update notification surface. The value is auditability of a local context
+bridge: which signals enter, which are excluded, and how stale or missing data
+is handled.
 
 Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch covers continuous heart-rate streaming and on-wrist haptics. The phone covers daily health rollups, ambient activity recognition, and device state (ringer, screen, battery, network type).
 
 ## Outbound payloads (POST to council `:8042`)
 
-| Payload | Cadence | Source | Endpoint |
-|---------|---------|--------|----------|
-| `HealthSummaryPayload` | Daily, 7 AM (WorkManager periodic, 12 h) | Health Connect | `POST /phone/health-summary` |
-| `PhoneContextPayload` | 60 s (foreground service) | System APIs + Activity Recognition | `POST /phone/context` |
+| Payload | Cadence | Source | Endpoint | Reader value |
+|---------|---------|--------|----------|---|
+| `HealthSummaryPayload` | Daily, 7 AM (WorkManager periodic, 12 h) | Health Connect | `POST /phone/health-summary` | Gives the estate a bounded daily summary without streaming raw health history. |
+| `PhoneContextPayload` | 60 s (foreground service) | System APIs + Activity Recognition | `POST /phone/context` | Carries local device context needed for awareness while keeping the payload schema explicit. |
 
 `HealthSummaryPayload` fields: `device_id`, `date`, `resting_hr`, `hr_min`, `hr_max`, `hr_mean`, `hrv_mean_ms`, `steps`, `active_minutes`, `sleep_start`, `sleep_end`, `sleep_duration_min`, `deep_min`, `rem_min`, `spo2_mean`, `skin_temp_deviation_c`. Missing records degrade to `null`.
 
@@ -70,7 +76,7 @@ stale visual.
 - **Health Connect** (`androidx.health.connect.client` 1.1.0-alpha12): heart rate, HRV, steps, sleep, SpO2, skin temperature, exercise. Eight runtime read permissions; missing records do not block the daily payload.
 - **Google Play Services Activity Recognition**: on-device ML over accelerometer; ~1 % battery / day per Google Play Services documentation.
 - **System state**: ringer mode, screen on/off, battery percent, charging state, network type.
-- Explicitly not collected: GPS, microphone, camera. No location, audio, or imagery is read.
+- **Explicit exclusions**: GPS, microphone, and camera are not collected. No location, audio, or imagery is read. This exclusion is part of the public value of the bridge, not an incidental omission.
 
 ## Network resolution
 
@@ -125,11 +131,11 @@ Four JUnit 5 unit-test files (~160 LOC):
 
 ## Counterpart routes on hapax-council
 
-| Endpoint | Implementation | Purpose |
-|----------|---------------|---------|
-| `POST /phone/health-summary` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_health_summary.json` and mirrors as RAG markdown |
-| `POST /phone/context` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_context.json` |
-| `GET /api/awareness` (port 8051) | `logos/api/routes/awareness.py` | Returns awareness state; 503 + `X-Awareness-State-Stale: true` when stale |
+| Endpoint | Implementation | Purpose | Reader value |
+|----------|---------------|---------|---|
+| `POST /phone/health-summary` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_health_summary.json` and mirrors as RAG markdown. | Identifies where summarized health context enters the estate. |
+| `POST /phone/context` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_context.json`. | Makes the higher-cadence device-context path auditable. |
+| `GET /api/awareness` (port 8051) | `logos/api/routes/awareness.py` | Returns awareness state; 503 + `X-Awareness-State-Stale: true` when stale. | Shows how the notification surface avoids pretending stale state is current. |
 
 ## Related Repositories
 
