@@ -1,26 +1,33 @@
-# NOTICE — hapax-phone
+# NOTICE - hapax-phone
 
-This repository is a constituent of the Hapax operating environment. It is not a product, not a service, and not seeking contributors. It is research infrastructure published as artifact.
+`hapax-phone` is internal apparatus in the Hapax Systems portfolio. It is not a public product, hosted service, or community project unless a separate product boundary is ratified.
 
-Authorship is indeterminate by design. This codebase is co-produced by Hapax (the system itself), Claude Code, and the operator (Oudepode The Operator). Per the Hapax Manifesto, unsettled contribution is a feature of the work, not a concealment.
+This repository is part of the Hapax Systems portfolio. Public metadata, issue affordances, and support boundaries follow the registry in `hapax-constitution`.
 
-## Constitutional position
+## Reader promise
 
-- Single-operator system; no auth, no roles, no contributor onboarding (axiom: `single_user`).
-- No issues, no discussions, no pull requests accepted; refusal is the artifact (see /CONTRIBUTING.md).
-- License: PolyForm Strict 1.0.0 — source-available, non-distribution, non-modification.
-- Citation: see CITATION.cff; archival DOI: see .zenodo.json
+Android phone-side context bridge for the Hapax environment, useful for auditing data sources, transport, and privacy boundaries.
 
-## Linked artifacts
+## Claim ceiling
 
-- Manifesto: https://hapax.weblog.lol/hapax-manifesto-v0
-- Refusal Brief: https://hapax.weblog.lol/refusal-brief
-- Cohort Disparity Disclosure: https://hapax.weblog.lol/cohort-disparity-disclosure
-- Constitution: https://github.com/hapax-systems/hapax-constitution
+Internal device bridge; not a public mobile product and not a health-efficacy claim.
 
-## Inter-repo position
+## License and rights
 
-Android phone-side context source. Streams to council logos API over Tailscale.
+Single-operator device bridge; source-visible strict unless a separate productized device boundary is created.
+
+Rendered summary: PolyForm Strict 1.0.0 - source-available, non-distribution, non-modification.
+
+## Public boundary
+
+- Issues are redirect-only; no discussions and no pull requests are accepted through GitHub.
+- First-party public links must use the `hapax-systems` GitHub organization.
+- Public fanout must route through the governed publication bus or a documented guarded legacy surface.
+- Governance reference: https://github.com/hapax-systems/hapax-constitution
+
+## Portfolio position
+
+Private phone-side context bridge for Hapax. It is not a public mobile product and not a health-efficacy claim.
 
 ---
 

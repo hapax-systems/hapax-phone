@@ -2,37 +2,41 @@
 
 # hapax-phone
 
-This repository is a constituent of the Hapax operating environment. It is not a product, not a service, and not seeking contributors. It is research infrastructure published as artifact.
+`hapax-phone` is internal apparatus in the Hapax Systems portfolio. It is visible only where a separate visibility decision permits inspection.
 
-Authorship is indeterminate by design: this codebase is co-produced by Hapax (the system itself), Claude Code, and the operator (Oudepode The Operator). Per the Hapax Manifesto, unsettled contribution is a feature of the work, not a concealment.
+## Reader promise
 
-## What this is, not what it does
+Android phone-side context bridge for the Hapax environment, useful for auditing data sources, transport, and privacy boundaries.
 
-Constituent of the Hapax operating environment. Android companion that streams daily health summary and 60-second phone context to the council logos API. Kotlin/Compose.
+## Claim ceiling
 
-## Constitutional position
+Internal device bridge; not a public mobile product and not a health-efficacy claim.
 
-- Single-operator system; no auth, no roles, no contributor onboarding (axiom: `single_user`)
-- No issues, no discussions, no PRs accepted; refusal is the artifact (see `CONTRIBUTING.md`)
-- License: PolyForm Strict 1.0.0 (source-available, non-distribution, non-modification)
-- Citation: see `CITATION.cff`; archival DOI: see `.zenodo.json`
+## License and rights
 
-## Linked artifacts
+Single-operator device bridge; source-visible strict unless a separate productized device boundary is created.
 
-- Manifesto: https://hapax.weblog.lol/hapax-manifesto-v0
-- Refusal Brief: https://hapax.weblog.lol/refusal-brief
-- Cohort Disparity Disclosure: https://hapax.weblog.lol/cohort-disparity-disclosure
-- Constitution: https://github.com/hapax-systems/hapax-constitution
+Rendered summary: PolyForm Strict 1.0.0 (source-available, non-distribution, non-modification). See `LICENSE`, `NOTICE.md`, `CITATION.cff`, and `.zenodo.json` for the authority surfaces.
 
-## Inter-repo position
+## Public boundary
 
-Android phone-side context source. Streams to council logos API over Tailscale.
+- Issues are redirect-only; no discussions, no pull requests accepted; see `CONTRIBUTING.md` and `SUPPORT.md`
+- Public copy must use `hapax-systems` organization links for first-party Hapax repositories.
+- Publication, weblog, RSS, social, DOI/archive, and other public fanout paths must route through the governed publication bus or a documented guarded legacy surface.
+- Governance reference: https://github.com/hapax-systems/hapax-constitution
+
+## Portfolio position
+
+Private phone-side context bridge for Hapax. It is not a public mobile product and not a health-efficacy claim.
 
 <!-- hapax-sdlc:preamble:end -->
 
 ## Description
 
-Android 14+ companion (Pixel/Compose) for the Hapax ecosystem. Single-operator deployment. Two outbound payload streams to the council watch receiver on port `8042`, plus one inbound consumption from the council logos API on port `8051` for the awareness live-update notification surface.
+Android 14+ companion (Pixel/Compose) for Hapax. Single-operator deployment.
+Two outbound payload streams go to the council watch receiver on port `8042`.
+One inbound path reads the council logos API on port `8051` for the awareness
+live-update notification surface.
 
 Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch covers continuous heart-rate streaming and on-wrist haptics. The phone covers daily health rollups, ambient activity recognition, and device state (ringer, screen, battery, network type).
 
@@ -51,7 +55,13 @@ Sister to [hapax-watch](https://github.com/hapax-systems/hapax-watch). The watch
 
 ## Inbound consumption (GET from council `:8051`)
 
-`AwarenessLiveUpdateService` (foreground service) polls `GET /api/awareness` every 60 s and renders a 5-field summary as an Android 16 Live Update notification: stance (daimonion voice register), stream liveness + chronicle event rate, health system status + failure count, refusals in the last hour, and presence decile. The notification is read-only by design — zero PendingIntent, zero action buttons. A response carrying `X-Awareness-State-Stale: true` (or HTTP 503) renders the notification in a stale visual.
+`AwarenessLiveUpdateService` (foreground service) polls `GET /api/awareness`
+every 60 s. It renders a 5-field Android 16 Live Update notification: stance,
+stream liveness plus chronicle event rate, health status plus failure count,
+refusals in the last hour, and presence decile. The notification is read-only
+by design: zero PendingIntent, zero action buttons. A response carrying
+`X-Awareness-State-Stale: true` (or HTTP 503) renders the notification in a
+stale visual.
 
 `AwarenessMinModeGate` is a feature flag for a future Android Min Mode surface (API level 37; `FEATURE_ENABLED=false`). The associated service is declared in the manifest and unreachable until both conditions hold.
 
@@ -121,7 +131,7 @@ Four JUnit 5 unit-test files (~160 LOC):
 | `POST /phone/context` (port 8042) | `agents/watch_receiver.py` | Persists to `~/hapax-state/watch/phone_context.json` |
 | `GET /api/awareness` (port 8051) | `logos/api/routes/awareness.py` | Returns awareness state; 503 + `X-Awareness-State-Stale: true` when stale |
 
-## Ecosystem
+## Related Repositories
 
 | Repository | Role |
 |-----------|------|
