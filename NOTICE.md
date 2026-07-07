@@ -8,6 +8,10 @@ This repository is part of the Hapax Systems portfolio. Public metadata, issue a
 
 Android phone-side context bridge for the Hapax environment, useful for auditing data sources, transport, and privacy boundaries.
 
+## Reader value
+
+Shows which phone-derived signals enter the estate, which sensors are excluded, and how missing data degrades without becoming a health-efficacy claim.
+
 ## Claim ceiling
 
 Internal device bridge; not a public mobile product and not a health-efficacy claim.
