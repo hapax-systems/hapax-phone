@@ -2,15 +2,15 @@
   "@context": "https://w3id.org/codemeta/3.0",
   "@type": "SoftwareSourceCode",
   "name": "hapax-phone",
-  "description": "Constituent of the Hapax operating environment. Android companion that streams daily health summary and 60-second phone context to the council logos API. Kotlin/Compose.",
+  "description": "Private Android device bridge for Hapax Systems. Streams approved daily health/context summaries and reads awareness state for local operator display.",
   "codeRepository": "https://github.com/hapax-systems/hapax-phone",
   "url": "https://github.com/hapax-systems/hapax-phone",
   "license": "https://polyformproject.org/licenses/strict/1.0.0/",
   "author": [
     {
-      "@type": "Person",
-      "givenName": "Ryan",
-      "familyName": "Kleeberger"
+      "@type": "Organization",
+      "name": "Hapax Systems",
+      "url": "https://github.com/hapax-systems"
     }
   ],
   "applicationCategory": "MobileApplication",

@@ -2,31 +2,32 @@
 
 # hapax-phone
 
-This repository is a constituent of the Hapax operating environment. It is not a product, not a service, and not seeking contributors. It is research infrastructure published as artifact.
+`hapax-phone` is internal apparatus in the Hapax Systems portfolio. It is published, mirrored, or staged for controlled inspection only where a separate visibility decision permits it.
 
-Authorship is indeterminate by design: this codebase is co-produced by Hapax (the system itself), Claude Code, and the operator (Oudepode The Operator). Per the Hapax Manifesto, unsettled contribution is a feature of the work, not a concealment.
+## Reader promise
 
-## What this is, not what it does
+Android phone-side context bridge for the Hapax environment, useful for auditing data sources, transport, and privacy boundaries.
 
-Constituent of the Hapax operating environment. Android companion that streams daily health summary and 60-second phone context to the council logos API. Kotlin/Compose.
+## Claim ceiling
 
-## Constitutional position
+Internal device bridge; not a public mobile product and not a health-efficacy claim.
 
-- Single-operator system; no auth, no roles, no contributor onboarding (axiom: `single_user`)
-- No issues, no discussions, no PRs accepted; refusal is the artifact (see `CONTRIBUTING.md`)
-- License: PolyForm Strict 1.0.0 (source-available, non-distribution, non-modification)
-- Citation: see `CITATION.cff`; archival DOI: see `.zenodo.json`
+## License and rights
 
-## Linked artifacts
+Single-operator device bridge; source-visible strict unless a separate productized device boundary is created.
 
-- Manifesto: https://hapax.weblog.lol/hapax-manifesto-v0
-- Refusal Brief: https://hapax.weblog.lol/refusal-brief
-- Cohort Disparity Disclosure: https://hapax.weblog.lol/cohort-disparity-disclosure
-- Constitution: https://github.com/hapax-systems/hapax-constitution
+Rendered summary: PolyForm Strict 1.0.0 (source-available, non-distribution, non-modification). See `LICENSE`, `NOTICE.md`, `CITATION.cff`, and `.zenodo.json` for the authority surfaces.
 
-## Inter-repo position
+## Public boundary
 
-Android phone-side context source. Streams to council logos API over Tailscale.
+- Issues are redirect-only; no discussions, no pull requests accepted; see `CONTRIBUTING.md` and `SUPPORT.md`
+- Public copy must use `hapax-systems` organization links for first-party Hapax repositories.
+- Publication, weblog, RSS, social, DOI/archive, and other public fanout paths must route through the governed publication bus or a documented guarded legacy surface.
+- Governance reference: https://github.com/hapax-systems/hapax-constitution
+
+## Portfolio position
+
+Private phone-side context bridge for Hapax. It is not a public mobile product and not a health-efficacy claim.
 
 <!-- hapax-sdlc:preamble:end -->
 

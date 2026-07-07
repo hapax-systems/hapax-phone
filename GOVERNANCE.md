@@ -15,7 +15,7 @@ Oudepode The Operator. Single operator, single workstation; governance applies u
 
 ## Inter-repo position
 
-Android phone-side context source. Streams to council logos API over Tailscale.
+Private phone-side context bridge for Hapax. It is not a public mobile product and not a health-efficacy claim.
 
 ---
 
